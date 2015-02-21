@@ -46,7 +46,7 @@ for (settype in c("train", "test")) {
 combined <- combined[,!duplicated(feature_labels[[2]])]
 
 # extract the measurements on the mean and standard deviation for each measurement along with subject and activity
-subset <- select(combined, subject, activity, contains("mean"), contains("std"))
+subset <- select(combined, subject, activity, contains("-mean"), contains("-std"))
 
 # summarize the average of each variable for each activity and each subject
 summary <- group_by(subset, activity, subject) %>% summarise_each(funs(mean))
