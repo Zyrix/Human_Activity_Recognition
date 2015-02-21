@@ -34,6 +34,8 @@ These signals were used to estimate variables of the feature vector for each pat
 * fBodyGyroMag
 * fBodyGyroJerkMag
 
+Features are normalized and bounded within [-1,1].
+
 The set of variables that were estimated from these signals are: 
 
 * mean(): Mean value
@@ -89,5 +91,7 @@ From the following variables the mean and standard deviation estimates were take
 * fBodyAccJerkMag
 * fBodyGyroMag
 * fBodyGyroJerkMag
+
+Note that the original variables are normalized and bounded within [-1,1].
 
 This results in a data set containing 81 columns, out of which 79 are averages of the means and standard deviations of the signal variables grouped by each activity and each subject.
