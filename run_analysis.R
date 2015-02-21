@@ -10,36 +10,32 @@ if (!file.exists(dir)) {
     unzip("dataset.zip")
 }
 
-# read in training set
-train <- read.table(paste("./",dir,"/train/X_train.txt", sep = ""), header = FALSE)
-
-# read in training activities
-train_activities <- read.table(paste("./",dir,"/train/y_train.txt", sep = ""), header = FALSE)
-
 # read in feature labels
-features <- read.table(paste(dir,"/features.txt", sep = ""))
-
-# assign feature labels to column names
-names(train) <- features[[2]]
+feature_labels <- read.table(paste(dir,"/features.txt", sep = ""))
 
 # read in activity labels
 activity_labels <- read.table(paste(dir,"/activity_labels.txt", sep = ""))
 
-# convert activities to factors
-train_activities[1] <- factor(train_activities[[1]], labels = activity_labels[[2]])
-names(train_activities) <- "activity"
+combined <- data.frame()
 
-# read in training subjects
-train_subjects <- read.table(paste("./",dir,"/train/subject_train.txt", sep = ""), header = FALSE)
-
-# convert subjects to factors
-train_subjects[1] <- factor(train_subjects[[1]])
-names(train_subjects) <- "subject"
-
-# combine training set with activities and subjects
-train_new <- cbind(train, train_activities, train_subjects)
-
-
-
-
-
+# do for both the train and test set
+for (settype in c("train", "test")) {
+    print(settype)
+    
+    # read in data set and assign feature labels to column names
+    data <- read.table(paste(dir,"/",settype,"/X_",settype,".txt", sep = ""), header = FALSE)
+    names(data) <- feature_labels[[2]]
+    
+    # read in activities and convert to factors
+    activities <- read.table(paste(dir,"/",settype,"/y_",settype,".txt", sep = ""), header = FALSE)
+    activities[1] <- factor(activities[[1]], labels = activity_labels[[2]])
+    names(activities) <- "activity"
+    
+    # read in subjects and convert to factors
+    subjects <- read.table(paste(dir,"/",settype,"/subject_",settype,".txt", sep = ""), header = FALSE)
+    subjects[1] <- factor(subjects[[1]])
+    names(subjects) <- "subject"
+    
+    # combine data set with activities and subjects and add to combined data set
+    combined <- rbind(combined, cbind(data, activities, subjects))
+}
