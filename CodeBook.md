@@ -96,3 +96,59 @@ From the following variables the mean and standard deviation estimates were take
 Note that the original variables are normalized and bounded within [-1,1].
 
 This results in a data set containing 81 columns, out of which 79 are averages of the means and standard deviations of the signal variables grouped by each activity and each subject.
+
+## Code Book
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-e3zv{font-weight:bold}
+</style>
+<table class="tg" style="undefined;table-layout: fixed; width: 910px">
+<colgroup>
+<col style="width: 169px">
+<col style="width: 133px">
+<col style="width: 133px">
+<col style="width: 263px">
+<col style="width: 212px">
+</colgroup>
+  <tr>
+    <th class="tg-e3zv">Variable Name</th>
+    <th class="tg-e3zv">Variable Type</th>
+    <th class="tg-e3zv">Variable Width</th>
+    <th class="tg-e3zv">Values</th>
+    <th class="tg-e3zv">Description</th>
+  </tr>
+  <tr>
+    <td class="tg-031e">activity</td>
+    <td class="tg-031e">factor</td>
+    <td class="tg-031e">18</td>
+    <td class="tg-031e">WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING</td>
+    <td class="tg-031e">performed activity</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">subject</td>
+    <td class="tg-031e">factor</td>
+    <td class="tg-031e">2</td>
+    <td class="tg-031e">1 - 30</td>
+    <td class="tg-031e">subject performing activity</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">SIGNAL-mean()(-AXIS)</td>
+    <td class="tg-031e">numeric</td>
+    <td class="tg-031e">7</td>
+    <td class="tg-031e">-1 - 1</td>
+    <td class="tg-031e">average of the mean of SIGNAL (possibly AXIS) grouped by activity and subject</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">SIGNAL-std()(-AXIS)</td>
+    <td class="tg-031e">numeric</td>
+    <td class="tg-031e">7</td>
+    <td class="tg-031e">-1 - 1</td>
+    <td class="tg-031e">average of the standard deviation of SIGNAL (possibly AXIS) grouped by activity and subject</td>
+  </tr>
+</table>
+</br>
+
+For possible values of SIGNAL and AXIS please refer to the previous section.

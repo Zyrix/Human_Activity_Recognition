@@ -1,4 +1,4 @@
-# Human Activity Recognition Using Smartphones Dataset
+# Human Activity Recognition Using Smartphones Dataset (Version 1.0)
 Evaluation of data about human activity recognition using smartphones.
 
 The following steps were performed on the original data set to obtain the tidy data set:
@@ -13,4 +13,5 @@ The following steps were performed on the original data set to obtain the tidy d
 4. remove duplicate columns
 5. extract the measurements on the mean and standard deviation for each measurement along with subject and activity
 6. summarize the average of each variable for each activity and each subject
-7. write the summary to a text file
+7. round to five significant digits
+8. write the summary to a text file

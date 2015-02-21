@@ -22,8 +22,6 @@ combined <- data.frame()
 
 # do for both the train and test set
 for (settype in c("train", "test")) {
-    print(settype)
-    
     # read in data set and assign feature labels to column names
     data <- read.table(paste(dir,"/",settype,"/X_",settype,".txt", sep = ""), header = FALSE)
     names(data) <- feature_labels[[2]]
@@ -45,11 +43,17 @@ for (settype in c("train", "test")) {
 # remove duplicate columns
 combined <- combined[,!duplicated(feature_labels[[2]])]
 
+# rearrange subject factors
+combined$subject <- factor(combined$subject, levels = 1:30)
+
 # extract the measurements on the mean and standard deviation for each measurement along with subject and activity
-subset <- select(combined, subject, activity, contains("-mean"), contains("-std"))
+subset <- select(combined, subject, activity, contains("-mean"), contains("-std")) %>% arrange(subject)
 
 # summarize the average of each variable for each activity and each subject
 summary <- group_by(subset, activity, subject) %>% summarise_each(funs(mean))
+
+# round to five significant digits
+summary[,-c(1,2)] <- round(summary[,-c(1,2)],5)
 
 # write the summary to a text file
 write.table(summary, "summary.txt", row.name = FALSE)
